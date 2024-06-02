@@ -10,10 +10,12 @@ class DtoObject
 
     protected function initDto($data)
     {
-        $vars = DtoTools::getVars($this);
-        foreach ($vars as $key => $value) {
-            if (isset($data[$key])){
-                $this->$key = $data[$key];
+        if ($data !== null) {
+            $vars = DtoTools::getVars($this);
+            foreach ($vars as $key => $value) {
+                if (isset($data[$key])){
+                    $this->$key = $data[$key];
+                }
             }
         }
     }

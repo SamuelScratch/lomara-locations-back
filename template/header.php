@@ -17,3 +17,5 @@
     <link rel="stylesheet" href="/style/reset.css">
     <link rel="stylesheet" href="/style/style.css">
 </head>
+
+<h1 style="text-align: center;font-size: 32px;font-weight: bold">Lomara Admin</h1>

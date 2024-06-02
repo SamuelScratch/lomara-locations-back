@@ -4,7 +4,9 @@ abstract class HttpBox
 {
 	private $requestMethod;
 	private $url;
-	private $parameter;
+
+	public $parameter;
+	public bool $isApi = true;
 
 	public function __construct($requestMethod, $url, $parameter)
 	{

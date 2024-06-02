@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule !\.(js|ico|gif|jpg|png|css)$ index.php
+RewriteRule !\.(js|ico|gif|jpg|jpeg|ttf|png|css)$ index.php

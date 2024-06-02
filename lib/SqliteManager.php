@@ -58,6 +58,12 @@ class SqliteManager { // Classe permettant de faire des opérations sur la base 
         return $this->db->lastInsertId();
     }
 
+    public function ReplaceDataArray($table, $data){
+        $result = $this->Execute("REPLACE INTO $table (".implode(",", array_keys($data)).") VALUES (:".implode(",:", array_keys($data)).")", $data);
+        return $this->db->lastInsertId();
+    }
+
+
     public function UpdateDataArray($table, $data, $id){
         $result = $this->Execute("UPDATE $table SET ".implode("=?,", array_keys($data))."=? WHERE id = ?", array_values($data) + array($id));
         return $result;

@@ -8,6 +8,7 @@ class DtoMaison extends DtoObject {
 	public $adresse;
     public $code_postal;
     public $description;
+    public $vignette;
 }
 
 

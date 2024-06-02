@@ -1,0 +1,40 @@
+<?php
+
+include_once "./lib/HttpBox.php";
+include_once "./lib/SqliteManager.php";
+include_once "./controller/MaisonBox.php";
+
+class AdminBox extends HttpBox
+{
+    const TABLE = "utilisateur";
+    const DBNAME = "lomara";
+    public $mess_err = "";
+
+    public function get()
+    {
+        if ($this->getParameterValue("id") != null)
+            include_once "./view/ViewMaison.php";
+        else
+            include_once "./view/ViewMaisons.php";
+    }
+
+    public function post()
+    {
+        $db = new SqliteManager(self::DBNAME);
+        $maisonBox = new MaisonBox($_SERVER["REQUEST_METHOD"], $_SERVER["REQUEST_URI"], $this->parameter);
+        $maisonBox->execute();
+        header("Location: /admin", true, 303);
+    }
+
+    public function put()
+    {
+    }
+
+    public function delete()
+    {
+    }
+}
+
+// Main
+$maisonBox = new AdminBox($_SERVER["REQUEST_METHOD"], $_SERVER["REQUEST_URI"], isset($params) ? $params : null);
+$maisonBox->execute();

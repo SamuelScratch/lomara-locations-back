@@ -14,16 +14,22 @@ class MaisonBox extends HttpBox
     public function get()
     {
         $db = new SqliteManager(self::DBNAME);
-        if ($this->getParameterValue("id") != null) {
+        if ($this->getParameterValue("id") != null && $this->getParameterValue("id") != "-1") {
             $this->maison = new DtoMaison($db->GetById(self::TABLE, $this->getParameterValue("id")));
-            echo json_encode($this->maison);
+            if ($this->isApi)
+                echo json_encode($this->maison);
         } 
+        elseif ($this->getParameterValue("id") == "-1") {
+            $this->maison = new DtoMaison(null);
+            $this->maison->id = -1;
+        }
         else {
             $maisonList = $db->GetAllFromTable(self::TABLE);
             foreach ($maisonList as $value) {
                 array_push($this->maisonList, new DtoMaison($value));
             }
-            echo json_encode($this->maisonList);
+            if ($this->isApi)
+                echo json_encode($this->maisonList);
         }
     }
 
@@ -31,7 +37,13 @@ class MaisonBox extends HttpBox
     {
         $db = new SqliteManager(self::DBNAME);
         $this->maison = new DtoMaison($_POST);
-        $lastInsertId = $db->InsertDataArray(self::TABLE, $this->maison->DtoToArray());
+        if ($this->maison->id == "-1") {
+            $this->maison->id = null;
+            $lastInsertId = $db->InsertDataArray(self::TABLE, $this->maison->DtoToArray());
+        }
+        else{
+            $lastInsertId = $db->ReplaceDataArray(self::TABLE, $this->maison->DtoToArray());
+        }
         if ($lastInsertId != 0) {
             $this->maison->id = $lastInsertId;
             return true;
@@ -60,5 +72,7 @@ class MaisonBox extends HttpBox
 }
 
 // Main
-$userBox = new MaisonBox($_SERVER["REQUEST_METHOD"], $_SERVER["REQUEST_URI"], isset($params) ? $params : null);
-$userBox->execute();
+if (str_starts_with($_SERVER["REQUEST_URI"], "/biens")) {
+    $userBox = new MaisonBox($_SERVER["REQUEST_METHOD"], $_SERVER["REQUEST_URI"], isset($params) ? $params : null);
+    $userBox->execute();
+}
