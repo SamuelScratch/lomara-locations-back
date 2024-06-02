@@ -9,7 +9,7 @@ class MaisonBox extends HttpBox
     public DtoMaison $maison;
     public $maisonList = array();
     const TABLE = "maison";
-    const DBNAME = "maisons";
+    const DBNAME = "lomara";
 
     public function get()
     {
