@@ -23,7 +23,7 @@ class AdminBox extends HttpBox
         $db = new SqliteManager(self::DBNAME);
         $maisonBox = new MaisonBox($_SERVER["REQUEST_METHOD"], $_SERVER["REQUEST_URI"], $this->parameter);
         $maisonBox->execute();
-        header("Location: /admin", true, 303);
+        header("Location: /admin/". $maisonBox->maison->id, true, 303);
     }
 
     public function put()

@@ -37,12 +37,17 @@ class MaisonBox extends HttpBox
     {
         $db = new SqliteManager(self::DBNAME);
         $this->maison = new DtoMaison($_POST);
+
         if ($this->maison->id == "-1") {
             $this->maison->id = null;
-            $lastInsertId = $db->InsertDataArray(self::TABLE, $this->maison->DtoToArray());
+            $maisonArray = $this->maison->DtoToArray();
+            unset($maisonArray["images"]);
+            $lastInsertId = $db->InsertDataArray(self::TABLE, $maisonArray);
         }
         else{
-            $lastInsertId = $db->ReplaceDataArray(self::TABLE, $this->maison->DtoToArray());
+            $maisonArray = $this->maison->DtoToArray();
+            unset($maisonArray["images"]);
+            $lastInsertId = $db->ReplaceDataArray(self::TABLE, $maisonArray);
         }
         if ($lastInsertId != 0) {
             $this->maison->id = $lastInsertId;

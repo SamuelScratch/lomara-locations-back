@@ -8,6 +8,9 @@ $route->add("/user", "./controller/UserBox.php");
 $route->add("/user/{id}", "./controller/UserBox.php");
 $route->add("/biens", "./controller/MaisonBox.php");
 $route->add("/biens/{id}", "./controller/MaisonBox.php");
+
 $route->add("/admin/{id}", "./controller/AdminBox.php");
+$route->add("/admin/{maison_id}/image", "./controller/ImageBox.php");
+$route->add("/admin/{maison_id}/image/{image_id}", "./controller/ImageBox.php");
 $route->add("/admin", "./controller/AdminBox.php");
 $route->notFound("./public/index.html");

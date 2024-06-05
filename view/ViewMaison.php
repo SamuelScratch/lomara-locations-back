@@ -16,8 +16,8 @@ include "./template/header.php";
 ?>
 
 <main style="display: flex;gap: 20px;margin: 20px auto">
-    <a href="/admin" style="border: 1px solid black; border-radius: 5px;padding: 10px;"><- Retour</a>
-            <form action="<?php echo "/admin/" . $maisonBox->maison->id; ?>" method="post" style="width:500px;display:flex;flex-direction:column;padding: 10px;border: 1px solid black; border-radius: 5px">
+    <a href="/admin" style="border: 1px solid black; border-radius: 5px;padding: 10px;font-weight: bold"><- Retour</a>
+ <form action="<?php echo "/admin/" . $maisonBox->maison->id; ?>" method="post" style="width:500px;display:flex;flex-direction:column;padding: 10px;border: 1px solid black; border-radius: 5px">
                 <label for="id">Id :</label>
                 <input type="text" name="id" value="<?php echo $maisonBox->maison->id; ?>" readonly>
                 <br><br>
@@ -44,6 +44,7 @@ include "./template/header.php";
                 <br>
                 <input type="submit" value="Enregistrer">
             </form>
+            <a href="<?php echo "/admin/" . $maisonBox->maison->id . "/image"; ?>" style="border: 1px solid black; border-radius: 5px;padding: 10px;font-weight: bold">Gérer les images -></a>
 </main>
 
 <script>

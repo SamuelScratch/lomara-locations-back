@@ -53,6 +53,11 @@ class SqliteManager { // Classe permettant de faire des opérations sur la base 
         return $result;
     }
 
+    public function GetAllFromTableWithWhere($table, $field, $val){
+        $result = $this->Execute("SELECT * FROM $table WHERE $field = :val", array("val" => $val));
+        return $result;
+    }
+
     public function InsertDataArray($table, $data){
         $result = $this->Execute("INSERT INTO $table (".implode(",", array_keys($data)).") VALUES (:".implode(",:", array_keys($data)).")", $data);
         return $this->db->lastInsertId();
@@ -72,6 +77,10 @@ class SqliteManager { // Classe permettant de faire des opérations sur la base 
     public function DeleteById($table, $id){
         $result = $this->Execute("DELETE FROM $table WHERE id = :id", array("id" => $id));
         return $result;
+    }
+
+    public function DeleteFromTable($table, $field, $val){
+        $result = $this->Execute("DELETE FROM $table WHERE $field = :val", array("val" => $val));
     }
 
     public function ElementIdExists($table, $val){

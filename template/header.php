@@ -3,9 +3,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <title>Sections</title>
+    <title>Lomara</title>
     <!-- Primary Meta Tags -->
-    <meta name="title" content="Sections">
+    <meta name="title" content="Lomara">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Material+Icons+Outlined" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -18,4 +18,4 @@
     <link rel="stylesheet" href="/style/style.css">
 </head>
 
-<h1 style="text-align: center;font-size: 32px;font-weight: bold">Lomara Admin</h1>
+<h1 style="text-align: center;font-size: 32px;font-weight: bold; margin:15px">Lomara Admin</h1>
