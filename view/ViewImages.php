@@ -40,4 +40,9 @@ include "./template/header.php";
     }
 </script>
 
+<?php
+
+include "./template/footer.php";
+
+?>
 </html>

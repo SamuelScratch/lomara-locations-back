@@ -8,7 +8,7 @@
 <body>  
     <div style="margin:100px auto;display:flex;flex-direction:column;align-items:center">
     <h1> Connexion Administrateur </h1>   
-    <form action="/admin" method="post">  
+    <form action="/login" method="post">  
         <div class="container">   
             <label>Identifiant : </label>   
             <input type="text" placeholder="Identifiant" name="username" required>  

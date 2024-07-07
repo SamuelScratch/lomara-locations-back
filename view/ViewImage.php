@@ -53,4 +53,9 @@ include "./template/header.php";
     document.querySelector("#inp").addEventListener("change", readFile);
 </script>
 
+<?php
+
+include "./template/footer.php";
+
+?>
 </html>

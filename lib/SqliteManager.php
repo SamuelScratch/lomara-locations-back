@@ -99,11 +99,17 @@ class SqliteManager { // Classe permettant de faire des opérations sur la base 
         return false;
     }
 
-    public function TestConnexion($table, $name, $password){
+    public function TestConnexion($table, $name, $password, bool $uncrypted = false){
         try {
-            $result = $this->Execute("SELECT name FROM $table WHERE name = :name", array("name" => $name));
-            if(count($result) == 1){
+            $result = $this->Execute("SELECT username FROM $table WHERE username = :username", array("username" => $name));
+            if(count($result) == 1 && !$uncrypted){
                 if ($this->UserPasswordCheck($table, $name, $password)){
+                    return true;
+                }
+            }
+            else if(count($result) == 1 && $uncrypted){
+                $result = $this->Execute("SELECT username FROM $table WHERE username = :username AND password = :password", array("username" => $name, "password" => $password));
+                if (count($result) == 1){
                     return true;
                 }
             }

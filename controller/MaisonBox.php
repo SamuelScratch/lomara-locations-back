@@ -42,11 +42,13 @@ class MaisonBox extends HttpBox
             $this->maison->id = null;
             $maisonArray = $this->maison->DtoToArray();
             unset($maisonArray["images"]);
+            unset($maisonArray["equipements"]);
             $lastInsertId = $db->InsertDataArray(self::TABLE, $maisonArray);
         }
         else{
             $maisonArray = $this->maison->DtoToArray();
             unset($maisonArray["images"]);
+            unset($maisonArray["equipements"]);
             $lastInsertId = $db->ReplaceDataArray(self::TABLE, $maisonArray);
         }
         if ($lastInsertId != 0) {

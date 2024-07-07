@@ -26,5 +26,10 @@ include "./template/header.php";
         </a>
 </main>
 
+<?php
+
+include "./template/footer.php";
+
+?>
 
 </html>
