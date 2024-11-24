@@ -32,6 +32,10 @@ class AdminBox extends HttpBox
 
     public function delete()
     {
+        $db = new SqliteManager(self::DBNAME);
+        $db->DeleteFromTable("association_equipement", "maison_id", $this->getParameterValue("id"));
+        $db->DeleteFromTable("image", "maison_id", $this->getParameterValue("id"));
+        var_dump($db->DeleteById("maison", $this->getParameterValue("id")));
     }
 }
 

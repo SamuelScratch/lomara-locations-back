@@ -56,9 +56,15 @@ include "./template/header.php";
                 <br>
                 <input type="submit" value="Enregistrer">
             </form>
+            <button onclick="deleteSomething(<?php echo $maisonBox->maison->id; ?>)">SUPPRIMER LA MAISON</button>
 </main>
 
 <script>
+    function deleteSomething(id) {
+        fetch("<?php echo "/admin/" ?>" + id, {
+            method: 'DELETE'
+        }).finally(response => window.location.href = "/admin")
+    }
     function readFile() {
 
         if (!this.files || !this.files[0]) return;

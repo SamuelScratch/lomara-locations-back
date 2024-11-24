@@ -74,6 +74,8 @@ class MaisonBox extends HttpBox
     public function delete()
     {
         $db = new SqliteManager(self::DBNAME);
+        $db->DeleteFromTable(EquipementBox::TABLE, "maison_id", $this->getParameterValue("id"));
+        $db->DeleteFromTable(ImageBox::TABLE, "maison_id", $this->getParameterValue("id"));
         var_dump($db->DeleteById(self::TABLE, $this->getParameterValue("id")));
     }
 }
