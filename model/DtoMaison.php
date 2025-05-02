@@ -15,6 +15,7 @@ class DtoMaison extends DtoObject {
     public $description;
     public $texte_tarif;
     public $vignette;
+    public $calendrier;
     public $nb_personne;
     public $images = array();
     public $equipements = array();

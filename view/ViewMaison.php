@@ -45,6 +45,9 @@ include "./template/header.php";
                 <label for="texte_tarif">Texte Tarif :</label>
                 <textarea name="texte_tarif" style="height: 150px;resize:vertical"><?php echo $maisonBox->maison->texte_tarif; ?></textarea>
                 <br>
+                <label for="calendrier">Lien calendrier (après src="") :</label>
+                <textarea name="calendrier" style="height: 150px;resize:vertical"><?php echo $maisonBox->maison->calendrier; ?></textarea>
+                <br>
                 <label>Vignette :</label>
                 <br>
                 <div>
